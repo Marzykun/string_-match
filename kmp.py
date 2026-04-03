@@ -1,0 +1,74 @@
+import time
+
+def compute_lps(pattern):
+    m = len(pattern)
+    lps = [0] * m
+
+    length = 0  # length of previous longest prefix suffix
+    i = 1
+
+    while i < m:
+        if pattern[i] == pattern[length]:
+            length += 1
+            lps[i] = length
+            i += 1
+        else:
+            if length != 0:
+                length = lps[length - 1]
+            else:
+                lps[i] = 0
+                i += 1
+
+    return lps
+
+
+def kmp_search(text, pattern):
+    start_time = time.time()
+
+    n = len(text)
+    m = len(pattern)
+
+    lps = compute_lps(pattern)
+
+    i = 0  # index for text
+    j = 0  # index for pattern
+
+    matches = []
+    comparisons = 0
+
+    while i < n:
+        comparisons += 1
+
+        if text[i] == pattern[j]:
+            i += 1
+            j += 1
+
+        if j == m:
+            matches.append(i - j)
+            j = lps[j - 1]
+
+        elif i < n and text[i] != pattern[j]:
+            if j != 0:
+                j = lps[j - 1]
+            else:
+                i += 1
+
+    end_time = time.time()
+
+    return {
+        "matches": matches,
+        "comparisons": comparisons,
+        "time": end_time - start_time
+    }
+
+
+# Example usage
+text = "ABABDABACDABABCABAB"
+pattern = "ABABCABAB"
+
+result = kmp_search(text, pattern)
+
+print("KMP Algorithm:")
+print("Matches:", result["matches"])
+print("Comparisons:", result["comparisons"])
+print("Time Taken:", result["time"])
