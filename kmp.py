@@ -4,7 +4,7 @@ def compute_lps(pattern):
     m = len(pattern)
     lps = [0] * m
 
-    length = 0  
+    length = 0
     i = 1
 
     while i < m:
@@ -30,8 +30,8 @@ def kmp_search(text, pattern):
 
     lps = compute_lps(pattern)
 
-    i = 0  
-    j = 0  
+    i = 0
+    j = 0
 
     matches = []
     comparisons = 0
@@ -60,15 +60,3 @@ def kmp_search(text, pattern):
         "comparisons": comparisons,
         "time": end_time - start_time
     }
-
-
-
-text = "ABABDABACDABABCABAB"
-pattern = "ABABCABAB"
-
-result = kmp_search(text, pattern)
-
-print("KMP Algorithm:")
-print("Matches:", result["matches"])
-print("Comparisons:", result["comparisons"])
-print("Time Taken:", result["time"])
