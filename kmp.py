@@ -4,7 +4,7 @@ def compute_lps(pattern):
     m = len(pattern)
     lps = [0] * m
 
-    length = 0  # length of previous longest prefix suffix
+    length = 0  
     i = 1
 
     while i < m:
@@ -30,8 +30,8 @@ def kmp_search(text, pattern):
 
     lps = compute_lps(pattern)
 
-    i = 0  # index for text
-    j = 0  # index for pattern
+    i = 0  
+    j = 0  
 
     matches = []
     comparisons = 0
@@ -62,7 +62,7 @@ def kmp_search(text, pattern):
     }
 
 
-# Example usage
+
 text = "ABABDABACDABABCABAB"
 pattern = "ABABCABAB"
 
