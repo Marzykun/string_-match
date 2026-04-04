@@ -23,7 +23,7 @@ def compute_lps(pattern):
 
 
 def kmp_search(text, pattern):
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     n = len(text)
     m = len(pattern)
@@ -53,7 +53,7 @@ def kmp_search(text, pattern):
             else:
                 i += 1
 
-    end_time = time.time()
+    end_time = time.perf_counter()
 
     return {
         "matches": matches,

@@ -8,7 +8,7 @@ def bad_char_table(pattern):
 
 
 def boyer_moore_search(text, pattern):
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     n = len(text)
     m = len(pattern)
@@ -36,7 +36,7 @@ def boyer_moore_search(text, pattern):
             shift = max(1, j - table.get(text[s + j], -1))
             s += shift
 
-    end_time = time.time()
+    end_time = time.perf_counter()
 
     return {
         "matches": matches,

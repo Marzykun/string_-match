@@ -1,7 +1,7 @@
 import time
 
 def naive_search(text, pattern):
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     n = len(text)
     m = len(pattern)
@@ -21,7 +21,7 @@ def naive_search(text, pattern):
         if j == m:
             matches.append(i)
 
-    end_time = time.time()
+    end_time = time.perf_counter()
 
     return {
         "matches": matches,
