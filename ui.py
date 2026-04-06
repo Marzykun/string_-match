@@ -19,10 +19,14 @@ def show_graph(results):
     plt.subplot(1, 2, 1)
     plt.bar(algos, times)
     plt.title("Time Comparison")
+    plt.xlabel("Algorithms")
+    plt.ylabel("Execution Time(sec)")
 
     plt.subplot(1, 2, 2)
     plt.bar(algos, comparisons)
-    plt.title("Comparisons")
+    plt.title("No of Comparisons")
+    plt.xlabel("Algorithms")
+    plt.ylabel("Comparisons Count")
 
     plt.tight_layout()
     plt.show()
